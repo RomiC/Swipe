@@ -86,7 +86,7 @@ function Swipe(container, options) {
     container.style.visibility = 'visible';
 
     // setup points
-    if (options.points === true && !points) {
+    if (slides.length > 1 && options.points === true && !points) {
       points = options.pointsContainer || container.children[1] || (pc = document.createElement("ul"), container.appendChild(pc), pc);
       var slidesNum = slides.length;
       for (var i = 0, point; point = document.createElement("li"), point.className = options.pointClass || "", point.setAttribute("data-num", i), i < slidesNum; i++) {
