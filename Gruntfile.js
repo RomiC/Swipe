@@ -9,8 +9,7 @@ module.exports = function( grunt ) {
       options: {
         mangle: {
           except: ['Swipe']
-        },
-        preserveComments: 'all'
+        }
       },
       dist: {
         files: {
