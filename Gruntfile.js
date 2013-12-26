@@ -9,11 +9,12 @@ module.exports = function( grunt ) {
       options: {
         mangle: {
           except: ['Swipe']
-        }
+        },
+        preserveComments: 'all'
       },
       dist: {
         files: {
-          'build/swipe.min.js': 'swipe.js'
+          'swipe.min.js': 'swipe.js'
         }
       }
     }

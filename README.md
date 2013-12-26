@@ -50,6 +50,16 @@ Swipe can take an optional second parameter– an object of key/value settings:
 
 - **continuous** Boolean *(default:true)* - create an infinite feel with no endpoints
 
+- **continueAfterStop** Boolean *(default:false)* — continue sliding after stop event fired
+
+- **points** Boolean *(default:false)* — show navigation points
+
+- **pointsContainer** DOM - DOM-element for points; if undefined new &lt;ul&gt; will be created and appended to the main container
+
+- **pointClass** String - additional class for navigation point
+
+- **navPoints** Boolean *(default:false)* — navigate between slides by clicking on points
+
 - **disableScroll** Boolean *(default:false)* - stop any touches on this container from scrolling the page
 
 - **stopPropagation** Boolean *(default:false)* - stop event propagation
