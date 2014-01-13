@@ -28,7 +28,7 @@ function Swipe(container, options) {
   // quit if no root element
   if (!container) return;
   var element = container.children[0];
-  var slides, slidePos, width, length;
+  var slides, slidePos, width, length, origLength;
   options = options || {};
   var index = parseInt(options.startSlide, 10) || 0;
   var speed = options.speed || 300;
@@ -86,10 +86,10 @@ function Swipe(container, options) {
     container.style.visibility = 'visible';
 
     // setup points
-    if (slides.length > 1 && options.points === true && !points) {
+    if (length > 1 && options.points === true && !points) {
       points = options.pointsContainer || container.children[1] || (pc = document.createElement("ul"), container.appendChild(pc), pc);
-      var slidesNum = slides.length;
-      for (var i = 0, point; point = document.createElement("li"), point.className = options.pointClass || "", point.setAttribute("data-num", i), i < slidesNum; i++) {
+
+      for (var i = 0, point; point = document.createElement("li"), point.className = options.pointClass || "", point.setAttribute("data-num", i), i < length; i++) {
         point.onclick = (options.navPoints === true ? function() { stop(); slide(parseInt(this.getAttribute("data-num")), options.speed);} : noop);
         points.appendChild(point);
       }
@@ -119,7 +119,6 @@ function Swipe(container, options) {
   }
 
   function slide(to, slideSpeed) {
-    console.log("%d -> %d", index, to);
     // do nothing if already on requested slide
     if (index == to) return;
 
@@ -244,7 +243,7 @@ function Swipe(container, options) {
     if (points) {
       var activePoint = points.getElementsByClassName("active")[0];
       activePoint.className = activePoint.className.replace(/\s*active\s*/, '');
-      points.children[index].className += " active";
+      points.children[index % points.children.length].className += " active";
     }
   }
 
